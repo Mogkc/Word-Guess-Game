@@ -1,4 +1,16 @@
-var choices = ["testing"];
+var choices = ["admiralty", "aground", "amidships", "starboard", 
+    "ballast", "barquentine", "barrelman", "beakhead", "billethead",
+    "binnacle", "boatswain", "bowline", "breakwater", "brigantine", "broadside",
+    "caboose", "capsize", "carronade", "catamaran", "commodore", "compass",
+    "corvette", "daggerboard", "deckhead", "dinghy", "downhaul", "dreadnought",
+    "drydock", "embayed", "fantail", "fathom", "flotilla", "forestays", "frigate",
+    "galley", "gangway", "gondola", "halliard", "heading", "helmsman", "hydrofoil",
+    "ironclad", "jacklines", "leeward", "lifejacket", "lookout", "maritime",
+    "masthead", "midshipman", "mizzenmast", "mooring", "nautical", "navigation",
+    "pennant", "pontoon", "ratlines", "reaching", "roadstead", "rowlock", "rudder",
+    "rummage", "sailing", "schooner", "scuttlebut", "slipway", "starboard",
+    "tacking", "tonnage", "topsail", "underway", "voyage", "waterline", "waypoint",
+    "weatherly", "whaleback", "windward", "yardarm"];
 var allowedGuesses = 5;
 
 function updateScreen() {
@@ -26,7 +38,7 @@ function updateScreen() {
 
 var game = {
     wins: 0,
-    
+
     newGame: function () {
         this.guessesRemaining = allowedGuesses;
         this.guesses = [];
@@ -36,6 +48,7 @@ var game = {
             this.playerKnows.push('_');
         }
         updateScreen();
+        console.log(this.currentWord);
     },
 
     newGuess: function (key) {
@@ -83,6 +96,9 @@ var game = {
 
 game.newGame();
 
-document.onkeyup = function(event) {
-    game.newGuess(event.key);
+document.onkeyup = function (event) {
+    //Make sure the guess is a lowercase letter
+    if (/^[a-z]/.test(event.key)) {
+        game.newGuess(event.key);
+    }
 };
