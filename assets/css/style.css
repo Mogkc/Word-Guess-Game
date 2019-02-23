@@ -1,5 +1,18 @@
-#guessing-game {
+#cover {
+    position: absolute;
+    background-color: black;
+    color: white;
+    text-align: center;
+    z-index: 1;
+    font-size: 3em;
     width: 74%;
+    height: 5em;
+}
+
+#guessing-game {
+    background-color: aquamarine;
+    width: 74%;
+    height: 15em;
 }
 
 h1 {

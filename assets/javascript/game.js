@@ -11,7 +11,7 @@ var choices = ["admiralty", "aground", "amidships", "starboard",
     "rummage", "sailing", "schooner", "scuttlebut", "slipway", "starboard",
     "tacking", "tonnage", "topsail", "underway", "voyage", "waterline", "waypoint",
     "weatherly", "whaleback", "windward", "yardarm"];
-var allowedGuesses = 5;
+var allowedGuesses = 6;
 
 function updateScreen() {
     document.getElementById("win-count").innerHTML = game.wins;
@@ -100,5 +100,10 @@ document.onkeyup = function (event) {
     //Make sure the guess is a lowercase letter
     if (/^[a-z]/.test(event.key)) {
         game.newGuess(event.key);
+    } else {
+        //If the key isn't a letter, see if they're starting the game.
+        if(event.keyCode === 13) {
+            document.getElementById("cover").style.zIndex = "-1";
+        }
     }
 };
